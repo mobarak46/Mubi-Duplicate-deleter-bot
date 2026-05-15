@@ -141,7 +141,7 @@ async def channel_handler(client: Client, message: Message):
             await client.send_message(
                 chat_id=info.LOG_CHANNEL,
                 text=(
-                    f"🗑️ <b>ᴅᴜᴘʟɪᴄᴀᴛᴇ ғɪʟᴇ ᴅᴇʟᴇᴛᴇᴅ</b>\n\n"
+                    f"🗑️ <b>--ᴅᴜᴘʟɪᴄᴀᴛᴇ ғɪʟᴇ ᴅᴇʟᴇᴛᴇᴅ--</b>\n\n"
                     f"🌐 <b>ᴄʜᴀɴɴᴇʟ:</b> {message.chat.title} (<code>{chat_id}</code>)\n"
                     f"📄 <b>ғɪʟᴇ ɴᴀᴍᴇ:</b> <code>{file_name}</code>\n"
                     f"⏰ <b>ᴀᴄᴛɪᴏɴ ᴛɪᴍᴇ:</b> {action_time}"
