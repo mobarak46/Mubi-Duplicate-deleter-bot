@@ -2,18 +2,18 @@ import os
 import time
 
 # API Configuration
-API_ID = int(os.environ.get("API_ID", ""))  # Replace with your actual Values
-API_HASH = os.environ.get("API_HASH", "")
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
-ADMIN_ID = int(os.environ.get("ADMIN_ID", ""))
-LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", ""))
+API_ID = int(os.environ.get("API_ID", "22175614"))  # Replace with your actual Values
+API_HASH = os.environ.get("API_HASH", "5dab14fb645d7c6b5f8d094581192e04")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "8920488633:AAHo3151nl1FV8ouF06B_WJm0PljdKMGlNw")
+ADMIN_ID = int(os.environ.get("ADMIN_ID", "1491400016"))
+LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1001654008278"))
 
 # Database Configuration
 DATABASE_NAME = os.environ.get("DATABASE_NAME", "MUBIXDELETERBOT")
 DATABASE_URI = os.environ.get("DATABASE_URI", "")
 
 # Assets
-START_IMG = os.environ.get("START_IMG", "")
+START_IMG = os.environ.get("START_IMG", "https://i.ibb.co/CKWXmyWP/x.jpg")
 
 # Bot Startup Greeting Logic (IST UTC+5:30)
 def get_greeting():
@@ -24,7 +24,7 @@ def get_greeting():
 
 # UI Text Variables
 START_TXT = """{}ʜᴇʟʟᴏ {}
-Welcome to Duplicate File Deleter Bot! I monitor your channel in real-time and automatically eliminate identical upcoming duplicate files."""
+ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴅᴜᴘʟɪᴄᴀᴛᴇ ғɪʟᴇ ᴅᴇʟᴇᴛᴇʀ ʙᴏᴛ! I ᴍᴏɴɪᴛᴏʀ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ɪɴ ʀᴇᴀʟ-ᴛɪᴍᴇ ᴀɴᴅ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴇʟɪᴍɪɴᴀᴛᴇ ɪᴅᴇɴᴛɪᴄᴀʟ ᴜᴘᴄᴏᴍɪɴɢ ᴅᴜᴘʟɪᴄᴀᴛᴇ ғɪʟᴇs."""
 
 HELP_TXT = """ʜᴇʟʟᴏ {}
 ʜᴇʀᴇ ɪs ᴀʟʟ ᴍʏ ᴜsᴇғᴜʟʟ ғᴇᴀᴛᴜʀᴇs.
