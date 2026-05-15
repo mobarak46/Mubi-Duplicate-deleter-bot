@@ -10,7 +10,7 @@ LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1001654008278"))
 
 # Database Configuration
 DATABASE_NAME = os.environ.get("DATABASE_NAME", "MUBIXDELETERBOT")
-DATABASE_URI = os.environ.get("DATABASE_URI", "")
+DATABASE_URI = os.environ.get("DATABASE_URI", "mongodb+srv://MUBIXDELETER:7PptZUTqhLvQ5gRP@cluster0.htrxpax.mongodb.net/?appName=Cluster0")
 
 # Assets
 START_IMG = os.environ.get("START_IMG", "https://i.ibb.co/CKWXmyWP/x.jpg")
