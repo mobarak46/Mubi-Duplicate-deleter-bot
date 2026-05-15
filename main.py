@@ -1,5 +1,6 @@
 import time
 from datetime import datetime
+import pytz  # <-- Added for accurate timezone conversion
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram.errors import MessageDeleteForbidden
@@ -16,6 +17,9 @@ bot = Client(
 
 # Global flag initialized at startup to track current live context
 START_TIME = time.time()
+
+# Define the IST timezone globally
+IST = pytz.timezone('Asia/Kolkata')
 
 # Main Inline Keyboard Setup
 def get_main_buttons():
@@ -77,16 +81,16 @@ async def ping_cmd(client: Client, message: Message):
     # Calculate Bot Response Latency
     bot_latency = (time.time() - start_ping) * 1000
     
-    # Format Timestamp in 12-Hour System
-    ist_timestamp = datetime.now().strftime("%Y-%m-%d %I:%M:%S %p")
+    # Format Timestamp in 12-Hour System passing the IST timezone object
+    ist_timestamp = datetime.now(IST).strftime("%Y-%m-%d %I:%M:%S %p")
     
     ping_text = (
-        f"🏓 <b>Pong!</b>\n\n"
-        f"⚡ <b>Response Time:</b> {bot_latency:.2f} ms\n"
-        f"🗄️ <b>Database Latency:</b> {db_latency:.2f} ms\n"
-        f"🤖 <b>Bot:</b> @{client.me.username}\n"
-        f"📡 <b>Status:</b> 🟢 Online\n"
-        f"⏰ <b>Timestamp:</b> {ist_timestamp}"
+        f"🏓 <b>ᴘᴏɴɢ!</b>\n\n"
+        f"⚡ <b>ʀᴇsᴘᴏɴsᴇ ᴛɪᴍᴇ:</b> {bot_latency:.2f} ms\n"
+        f"🗄️ <b>ᴅᴀᴛᴀʙᴀsᴇ ʟᴀᴛᴇɴᴄʏ:</b> {db_latency:.2f} ms\n"
+        f"🤖 <b>ʙᴏᴛ:</b> @{client.me.username}\n"
+        f"📡 <b>sᴛᴀᴛᴜs:</b> 🟢 ᴏɴʟɪɴᴇ\n"
+        f"⏰ <b>ᴛɪᴍᴇsᴛᴀᴍᴘ:</b> {ist_timestamp}"
     )
     await message.reply_text(ping_text)
 
@@ -129,14 +133,18 @@ async def channel_handler(client: Client, message: Message):
     if await db.is_duplicate(chat_id, file_name):
         try:
             await message.delete()
+            
+            # Fetch the dynamic current time in IST right as the deletion occurs
+            action_time = datetime.now(IST).strftime('%Y-%m-%d %I:%M:%S %p')
+            
             # Send an alert to your log channel asynchronously
             await client.send_message(
                 chat_id=info.LOG_CHANNEL,
                 text=(
-                    f"🗑️ <b>Duplicate File Deleted</b>\n\n"
-                    f"🌐 <b>Channel:</b> {message.chat.title} (<code>{chat_id}</code>)\n"
-                    f"📄 <b>File Name:</b> <code>{file_name}</code>\n"
-                    f"⏰ <b>Action Time:</b> {datetime.now().strftime('%Y-%m-%d %I:%M:%S %p')}"
+                    f"🗑️ <b>ᴅᴜᴘʟɪᴄᴀᴛᴇ ғɪʟᴇ ᴅᴇʟᴇᴛᴇᴅ</b>\n\n"
+                    f"🌐 <b>ᴄʜᴀɴɴᴇʟ:</b> {message.chat.title} (<code>{chat_id}</code>)\n"
+                    f"📄 <b>ғɪʟᴇ ɴᴀᴍᴇ:</b> <code>{file_name}</code>\n"
+                    f"⏰ <b>ᴀᴄᴛɪᴏɴ ᴛɪᴍᴇ:</b> {action_time}"
                 )
             )
         except MessageDeleteForbidden:
@@ -149,6 +157,6 @@ async def channel_handler(client: Client, message: Message):
             print(f"Error handling duplicate: {e}")
 
 if __name__ == "__main__":
-    print("Samantha is starting up...")
+    print("Mamitha is starting up...")
     bot.run()
-  
+    
