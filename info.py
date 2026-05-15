@@ -1,8 +1,14 @@
 import os
-import time
+import time  
+from datetime import datetime
+import pytz
+
+# Define the IST timezone globally
+IST = pytz.timezone('Asia/Kolkata')
+
 
 # API Configuration
-API_ID = int(os.environ.get("API_ID", "22175614"))  # Replace with your actual Values
+API_ID = int(os.environ.get("API_ID", "22175614"))  
 API_HASH = os.environ.get("API_HASH", "5dab14fb645d7c6b5f8d094581192e04")
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "8920488633:AAHo3151nl1FV8ouF06B_WJm0PljdKMGlNw")
 ADMIN_ID = int(os.environ.get("ADMIN_ID", "1491400016"))
@@ -15,12 +21,14 @@ DATABASE_URI = os.environ.get("DATABASE_URI", "mongodb+srv://MUBIXDELETER:7PptZU
 # Assets
 START_IMG = os.environ.get("START_IMG", "https://i.ibb.co/CKWXmyWP/x.jpg")
 
-# Bot Startup Greeting Logic (IST UTC+5:30)
+
+# Bot Startup Greeting Logic (Using your standard time offset method)
 def get_greeting():
-    current_time = time.gmtime(time.time() + 19800)
+    current_time = time.gmtime(time.time() + 19800)  # 19800 seconds = 5.5 hours (IST)
     if current_time.tm_hour == 5:
         return "🌅 Good Morning Boss! 📊\n\n"
     return ""
+
 
 # UI Text Variables
 START_TXT = """{}ʜᴇʟʟᴏ {}
